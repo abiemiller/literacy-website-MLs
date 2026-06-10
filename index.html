@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,23 +36,29 @@ body {
 .hotspot-layer {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 10;
 }
 
-.hotspot-layer a {
-  position: absolute;
-  display: block;
-  background: rgba(255,255,255,0.001);
+.click-wedge,
+.outer-ring-link {
+  fill: rgba(255,255,255,0.001);
   cursor: pointer;
+  pointer-events: all;
 }
 
-.hotspot-layer a:hover {
-  background: rgba(255,255,255,0.18);
+.click-wedge:hover {
+  fill: rgba(255,255,255,0.18);
+}
+
+.outer-ring-link:hover {
+  fill: rgba(255,255,255,0.10);
 }
 
 .center-click {
   position: absolute;
-  z-index: 20;
+  z-index: 30;
   top: 50%;
   left: 50%;
   width: 24%;
@@ -64,72 +69,6 @@ body {
   background: transparent;
   cursor: pointer;
 }
-
-/* OUTER RING */
-.outer-ring {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  clip-path: circle(50% at 50% 50%);
-}
-
-/* SIMPLE WEDGE HIT AREAS */
-.assessment {
-  top: 4%;
-  left: 38%;
-  width: 24%;
-  height: 28%;
-}
-
-.clr {
-  top: 14%;
-  left: 61%;
-  width: 27%;
-  height: 27%;
-}
-
-.cross {
-  top: 38%;
-  left: 68%;
-  width: 28%;
-  height: 24%;
-}
-
-.syntax {
-  top: 61%;
-  left: 61%;
-  width: 27%;
-  height: 27%;
-}
-
-.text-writing {
-  top: 68%;
-  left: 38%;
-  width: 24%;
-  height: 28%;
-}
-
-.vocab {
-  top: 61%;
-  left: 12%;
-  width: 27%;
-  height: 27%;
-}
-
-.pa {
-  top: 38%;
-  left: 4%;
-  width: 28%;
-  height: 24%;
-}
-
-.phonics {
-  top: 14%;
-  left: 12%;
-  width: 27%;
-  height: 27%;
-}
 </style>
 </head>
 
@@ -139,28 +78,58 @@ body {
 
   <div id="spinArea">
     <img src="./LiteracyWheel.png" class="wheel-image" alt="Literacy for Multilingual Learners Wheel">
-  </div>
 
-  <div class="hotspot-layer">
+    <svg class="hotspot-layer" viewBox="0 0 100 100">
 
-    <a class="outer-ring" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/oracy" target="_blank" aria-label="Oracy"></a>
+      <!-- OUTER RING -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/oracy" target="_blank">
+        <path class="outer-ring-link" fill-rule="evenodd" d="
+          M 50 1 A 49 49 0 1 1 49.99 1 Z
+          M 50 8 A 42 42 0 1 0 50.01 8 Z
+        "></path>
+      </a>
 
-    <a class="assessment" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/assessment" target="_blank" aria-label="Assessment"></a>
+      <!-- TOP: Assessment -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/assessment" target="_blank">
+        <path class="click-wedge" d="M 33.93 11.20 A 42 42 0 0 1 66.07 11.20 L 55.36 36.86 A 14 14 0 0 0 44.64 36.86 Z"></path>
+      </a>
 
-    <a class="clr" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/culturally-and-linguistically-responsive" target="_blank" aria-label="Culturally and Linguistically Responsive"></a>
+      <!-- TOP RIGHT: Culturally and Linguistically Responsive -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/culturally-and-linguistically-responsive" target="_blank">
+        <path class="click-wedge" d="M 66.07 11.20 A 42 42 0 0 1 88.80 33.93 L 63.14 44.64 A 14 14 0 0 0 55.36 36.86 Z"></path>
+      </a>
 
-    <a class="cross" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/cross-linguistic-connections" target="_blank" aria-label="Cross Linguistic Connections"></a>
+      <!-- RIGHT: Cross Linguistic Connections -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/cross-linguistic-connections" target="_blank">
+        <path class="click-wedge" d="M 88.80 33.93 A 42 42 0 0 1 88.80 66.07 L 63.14 55.36 A 14 14 0 0 0 63.14 44.64 Z"></path>
+      </a>
 
-    <a class="syntax" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/syntax" target="_blank" aria-label="Syntax"></a>
+      <!-- BOTTOM RIGHT: Syntax -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/syntax" target="_blank">
+        <path class="click-wedge" d="M 88.80 66.07 A 42 42 0 0 1 66.07 88.80 L 55.36 63.14 A 14 14 0 0 0 63.14 55.36 Z"></path>
+      </a>
 
-    <a class="text-writing" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/text-comprehension-and-written-expression" target="_blank" aria-label="Text Comprehension and Written Expression"></a>
+      <!-- BOTTOM: Text Comprehension and Written Expression -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/text-comprehension-and-written-expression" target="_blank">
+        <path class="click-wedge" d="M 66.07 88.80 A 42 42 0 0 1 33.93 88.80 L 44.64 63.14 A 14 14 0 0 0 55.36 63.14 Z"></path>
+      </a>
 
-    <a class="vocab" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/vocabulary-and-morphology" target="_blank" aria-label="Vocabulary and Morphology"></a>
+      <!-- BOTTOM LEFT: Vocabulary and Morphology -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/vocabulary-and-morphology" target="_blank">
+        <path class="click-wedge" d="M 33.93 88.80 A 42 42 0 0 1 11.20 66.07 L 36.86 55.36 A 14 14 0 0 0 44.64 63.14 Z"></path>
+      </a>
 
-    <a class="pa" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/phonological-awareness" target="_blank" aria-label="Phonological Awareness"></a>
+      <!-- LEFT: Phonological Awareness -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/phonological-awareness" target="_blank">
+        <path class="click-wedge" d="M 11.20 66.07 A 42 42 0 0 1 11.20 33.93 L 36.86 44.64 A 14 14 0 0 0 36.86 55.36 Z"></path>
+      </a>
 
-    <a class="phonics" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/phonics-and-spelling" target="_blank" aria-label="Phonics and Spelling"></a>
+      <!-- TOP LEFT: Phonics and Spelling -->
+      <a href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/phonics-and-spelling" target="_blank">
+        <path class="click-wedge" d="M 11.20 33.93 A 42 42 0 0 1 33.93 11.20 L 44.64 36.86 A 14 14 0 0 0 36.86 44.64 Z"></path>
+      </a>
 
+    </svg>
   </div>
 
   <button class="center-click" onclick="spinWheel()" aria-label="Click center to spin"></button>
