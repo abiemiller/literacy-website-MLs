@@ -1,1 +1,180 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Literacy Wheel</title>
+
+<style>
+body {
+  margin: 0;
+  background: transparent;
+}
+
+.wheel-stage {
+  position: relative;
+  width: min(95vw, 700px);
+  height: min(95vw, 700px);
+  margin: auto;
+}
+
+#spinArea {
+  position: absolute;
+  inset: 0;
+  transition: transform 14s cubic-bezier(.08,.65,.12,1);
+  transform-origin: 50% 50%;
+}
+
+.wheel-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hotspot-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.hotspot-layer a {
+  position: absolute;
+  display: block;
+  background: rgba(255,255,255,0.001);
+  cursor: pointer;
+}
+
+.hotspot-layer a:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.center-click {
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  width: 24%;
+  height: 24%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* OUTER RING */
+.outer-ring {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(50% at 50% 50%);
+}
+
+/* SIMPLE WEDGE HIT AREAS */
+.assessment {
+  top: 4%;
+  left: 38%;
+  width: 24%;
+  height: 28%;
+}
+
+.clr {
+  top: 14%;
+  left: 61%;
+  width: 27%;
+  height: 27%;
+}
+
+.cross {
+  top: 38%;
+  left: 68%;
+  width: 28%;
+  height: 24%;
+}
+
+.syntax {
+  top: 61%;
+  left: 61%;
+  width: 27%;
+  height: 27%;
+}
+
+.text-writing {
+  top: 68%;
+  left: 38%;
+  width: 24%;
+  height: 28%;
+}
+
+.vocab {
+  top: 61%;
+  left: 12%;
+  width: 27%;
+  height: 27%;
+}
+
+.pa {
+  top: 38%;
+  left: 4%;
+  width: 28%;
+  height: 24%;
+}
+
+.phonics {
+  top: 14%;
+  left: 12%;
+  width: 27%;
+  height: 27%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wheel-stage">
+
+  <div id="spinArea">
+    <img src="./LiteracyWheel.png" class="wheel-image" alt="Literacy for Multilingual Learners Wheel">
+  </div>
+
+  <div class="hotspot-layer">
+
+    <a class="outer-ring" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/oracy" target="_blank" aria-label="Oracy"></a>
+
+    <a class="assessment" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/assessment" target="_blank" aria-label="Assessment"></a>
+
+    <a class="clr" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/culturally-and-linguistically-responsive" target="_blank" aria-label="Culturally and Linguistically Responsive"></a>
+
+    <a class="cross" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/cross-linguistic-connections" target="_blank" aria-label="Cross Linguistic Connections"></a>
+
+    <a class="syntax" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/syntax" target="_blank" aria-label="Syntax"></a>
+
+    <a class="text-writing" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/text-comprehension-and-written-expression" target="_blank" aria-label="Text Comprehension and Written Expression"></a>
+
+    <a class="vocab" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/vocabulary-and-morphology" target="_blank" aria-label="Vocabulary and Morphology"></a>
+
+    <a class="pa" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/phonological-awareness" target="_blank" aria-label="Phonological Awareness"></a>
+
+    <a class="phonics" href="https://sites.google.com/cherrycreekschools.org/ccsd-literacy-for-mls/phonics-and-spelling" target="_blank" aria-label="Phonics and Spelling"></a>
+
+  </div>
+
+  <button class="center-click" onclick="spinWheel()" aria-label="Click center to spin"></button>
+
+</div>
+
+<script>
+let rotation = 0;
+
+function spinWheel() {
+  rotation += 360 + Math.floor(Math.random() * 45);
+  document.getElementById("spinArea").style.transform = "rotate(" + rotation + "deg)";
+}
+</script>
+
+</body>
+</html>
